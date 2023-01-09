@@ -1,4 +1,3 @@
-atenni.github.io
-================
+# atenni.github.io
 
 Trying out Github pages...
