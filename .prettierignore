@@ -1,3 +1,9 @@
 .vscode/
 dist/
 node_modules/
+
+# Temporarily ignore .mdx files.
+#
+# As of 2023-01-10 Prettier only supports MDX1, whereas this project uses MDX2.
+# Tracking issue: https://github.com/prettier/prettier/issues/12209
+**/*.mdx
