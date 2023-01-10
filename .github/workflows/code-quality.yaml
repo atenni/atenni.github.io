@@ -1,0 +1,49 @@
+name: Run code quality checks
+
+on:
+  push:
+    # Ignore pushes to main to avoid unnecessary duplication.
+    #
+    # Branch protection rules on `main` require a pull request with passing
+    # status checks before merging into `main` – so these code quality checks
+    # will already have been run.
+    branches-ignore: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository using git
+        uses: actions/checkout@v3
+      - name: Run Prettier
+        run: |
+          npx prettier --check .
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository using git
+        uses: actions/checkout@v3
+      - name: Run test suite
+        run: |
+          echo "::warning title=TODO::Test suite needs to be written"
+          echo "# TODOs" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- Write test suite" >> $GITHUB_STEP_SUMMARY
+
+  spell-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository using git
+        uses: actions/checkout@v3
+      - name: Run spell check
+        run: |
+          echo "::warning title=TODO::Spell check needs to be set up"
+          echo "# TODOs" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- Set up spell check" >> $GITHUB_STEP_SUMMARY
+          echo "  - Should target all /src and *.md (to include README)" >> $GITHUB_STEP_SUMMARY

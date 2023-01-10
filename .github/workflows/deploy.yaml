@@ -3,7 +3,6 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
-  # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
 
 # Allow this job to clone the repo and create a page deployment
@@ -18,15 +17,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout your repository using git
-        uses: actions/checkout@v3
-      - name: Run Prettier
-        run: |
-          npx prettier --check .
-
   build:
     runs-on: ubuntu-latest
     steps:
