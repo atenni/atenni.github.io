@@ -1,0 +1,30 @@
+---
+const { height } = Astro.props;
+---
+
+<footer>
+  Andrew Tennikoff • Curriculum Vitae • {
+    new Date().toLocaleDateString("en-GB", { year: "numeric", month: "long" })
+  }
+</footer>
+
+<style define:vars={{ height }}>
+  footer {
+    box-sizing: border-box;
+    break-after: page;
+    position: fixed;
+    bottom: 0;
+    padding-bottom: 2rem;
+    height: var(--height);
+    display: flex;
+    align-items: flex-end;
+
+    /* background: red; */
+  }
+
+  @media screen {
+    footer {
+      display: none;
+    }
+  }
+</style>

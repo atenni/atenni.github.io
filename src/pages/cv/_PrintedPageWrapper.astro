@@ -1,0 +1,38 @@
+---
+const { footerHeight, headerHeight } = Astro.props;
+---
+
+<table>
+  <thead><tr><td>&nbsp;</td></tr></thead>
+  <tbody>
+    <tr>
+      <td>
+        <slot />
+      </td>
+    </tr>
+  </tbody>
+  <tfoot><tr><td>&nbsp;</td></tr></tfoot>
+</table>
+
+<style define:vars={{ footerHeight, headerHeight }}>
+  /* Override default styles for site */
+  :root {
+    --bg-color: white;
+    --text-color: #333;
+    --page-padding: 1.75cm;
+  }
+
+  table {
+    border: 1px solid red;
+  }
+  thead {
+    height: var(--headerHeight, 0);
+  }
+  tfoot {
+    height: var(--footerHeight, 0);
+  }
+
+  @page {
+    margin: 0cm;
+  }
+</style>

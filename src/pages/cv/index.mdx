@@ -1,0 +1,74 @@
+---
+layout: ../../layouts/Layout.astro
+title: Curriculum Vitae for Andrew Tennikoff
+footerHeight: 2cm
+draft: true
+---
+
+import Footer from "./_Footer.astro";
+import PageBreak from "./_PageBreak.astro";
+import PrintedPageWrapper from "./_PrintedPageWrapper.astro";
+
+<PrintedPageWrapper footerHeight={frontmatter.footerHeight}>
+
+  <div style="
+    height: 80vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;">
+
+  # { frontmatter.title }
+
+  * andrew@malalta.com
+  * 0421 549 040
+  * https://www.linkedin.com/in/andrewtennikoff/
+  * https://github.com/atenni
+  * https://andrew.tennikoff.com/cv/ _(online version of this document for sharing, etc.)_
+
+  {
+    new Date().toLocaleDateString("en-GB", { year: "numeric", month: "long" })
+  }
+  
+  </div>
+  <PageBreak />
+
+  ## Professional statement
+
+  [Summary paragraph]
+
+  ## Educational Qualifications, Certifications and Training
+
+  * Masters...
+
+  ## Employment History (Professional, Consulting & Academic)
+
+  ### Professional experience
+
+  * [Job title] • [Dates] • [Location]
+
+    [Summary paragraph]
+
+    1. [Achievement bullets...]
+  
+  ### Consulting experience
+
+  * [Job title] • [Dates] • [Location]
+
+    [Summary paragraph]
+
+  ### Academic experience
+
+  * [Job title] • [Dates] • [Location]
+
+    [Summary paragraph]
+
+  ## Governance, Boards, and Committees
+
+  * [Bullets...]
+
+
+  <div>{"lorum ipsum ".repeat(500)}</div>
+
+</PrintedPageWrapper>
+
+<Footer height={frontmatter.footerHeight} />
