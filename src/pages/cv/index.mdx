@@ -9,66 +9,167 @@ import Footer from "./_Footer.astro";
 import PageBreak from "./_PageBreak.astro";
 import PrintedPageWrapper from "./_PrintedPageWrapper.astro";
 
-<PrintedPageWrapper footerHeight={frontmatter.footerHeight}>
+<PrintedPageWrapper
+  footerHeight={frontmatter.footerHeight}
+  headerHeight={frontmatter.footerHeight}>
 
-  <div style="
-    height: 80vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;">
+  <section class="front-page">
 
   # { frontmatter.title }
 
-  * andrew@malalta.com
-  * 0421 549 040
-  * https://www.linkedin.com/in/andrewtennikoff/
-  * https://github.com/atenni
-  * https://andrew.tennikoff.com/cv/ _(online version of this document for sharing, etc.)_
+  <ul>
+    <li data-type="email">
+      andrew@malalta.com
+    </li>
+    <li data-type="phone">
+      0421 549 040
+    </li>
+    <li data-type="linkedin">
+      https://www.linkedin.com/in/andrewtennikoff
+    </li>
+    <li data-type="github">
+      https://github.com/atenni
+    </li>
+    <li data-type="cv">
+      https://andrew.tennikoff.com/cv
+      
+      - _(An online version of this document for sharing, forwarding etc.)_
+    </li>
+  </ul>
+  
 
-  {
-    new Date().toLocaleDateString("en-GB", { year: "numeric", month: "long" })
-  }
+  {/* Note this is UTC time whereas we use local time elsewhere, so for 11hrs
+      on month start/end we'll be off by one month. Meh...
+  */}
+  <time datetime={new Date().toISOString().split("T")[0]}>
+    {
+      new Date().toLocaleDateString("en-GB", { year: "numeric", month: "long" })
+    }
+  </time>
   
-  </div>
-  
-  <PageBreak />
+  </section>
 
   ## Professional statement
 
-  [Summary paragraph]
+  **I love the web and have worked in various capacities as both a front & backend
+  developer for the last 10 years. Most recently my responsibilities
+  have been centred around _engineering management_ – but for my next role I'd
+  like to pivot back towards an _individual contributor_ position within a team.**
 
-  ## Educational Qualifications, Certifications and Training
+  The common thread throughout my career has been _the application technical
+  solutions to user and business problems._ I started out building websites for
+  musicians, moved into the _education technology_ space developing tools and
+  applications for online learners[^1]...
 
-  * Masters...
+  [^1]: This is a footnote
+
+  ### Technologies I've worked with professionally
+
+  <ul style="column-count: 4;">
+    <li>JavaScript</li>
+    <li>TypeScript</li>
+    <li>React</li>
+    <li>NextJS</li>
+    <li>Astro</li>
+    <li style="break-before: column;">Python</li>
+    <li>Django</li>
+    <li>Wagtail</li>
+    <li style="break-before: column;">Docker</li>
+    <li>REST</li>
+    <li>GraphQL</li>
+    <li>PostgreSQL</li>
+    <li>Sqlite</li>
+    <li style="break-before: column;">AWS</li>
+    <li>GitHub</li>
+    <li>Shopify</li>
+    <li>Serverless frameworks</li>
+    <li>Test driven development</li>
+  </ul>
+
+  ## Educational Qualifications
+
+  - **Masters of Commerce, Finance** • University of Sydney
+  - **Diploma of Financial Services** • Kaplan Professional
+  - **Bachelor of Music (Honours)** • Australian Institute of Music
+  - **Bachelor of Arts** • University of Sydney
+
+  ## Certifications and Training
+
+  - **AWS Certified Big Data** • 2018 • Amazon Web Services
+  - **Balanced Scorecard Professional Certification** • 2020 • George Washington University
+
 
   ## Employment History (Professional, Consulting & Academic)
 
   ### Professional experience
 
-  * [Job title] • [Dates] • [Location]
+  - **Founder** • 2018—present • _Malalta_
 
     [Summary paragraph]
 
     1. [Achievement bullets...]
   
+  - **Director of Strategy** • 2017—2018 • _Alphacrucis University College_
+
+    [Summary paragraph]
+
+    1. [Achievement bullets...]
+
+  * **Chief Information Officer** • 2010—2017 • _Alphacrucis University College_
+
+    [Summary paragraph]
+
+    1. [Achievement bullets...]
+
+  * **Web Application Developer** • 2007—2010 • _Alphacrucis University College_
+
+    [Summary paragraph]
+
+    1. [Achievement bullets...]
+  
+  * **Self employed** • 1996—2007
+
+    [Summary paragraph]
+
+    1. _Musician (full time from 2000—2007):_ After my Bachelors of Music I
+       worked as a guitarist...
+    2. _Freelance web development:_ Towards the end of this period I started
+       learning...
+  
   ### Consulting experience
 
-  * [Job title] • [Dates] • [Location]
+  - **Virtual CTO** • 2021—2022 • _Alphacrucis University College_
+
+    [Summary paragraph]
+  
+  - **Virtual CTO** • 2020—2021 • _Virtual Creative_
+
+    [Summary paragraph]
+  
+  - **Advisor** • 2020 • _Atelier_
+
+    [Summary paragraph]
+  
+  - **Advisor** • 2019—2022 • _Pwrmeals_
 
     [Summary paragraph]
 
   ### Academic experience
 
-  * [Job title] • [Dates] • [Location]
+  - **Lecturer in Business Information Systems** • 2021—2022 • _Alphacrucis
+    University College_
+
+    [Summary paragraph]
+  
+  - **Tutor: Music Theory / Aural / Guitar** • 2002—2004 • _Australian
+    Institute of Music_
 
     [Summary paragraph]
 
   ## Governance, Boards, and Committees
 
-  * [Bullets...]
-
-
-  <div>{"lorum ipsum ".repeat(500)}</div>
+  - **Board Member, Healthy Teams Co** • 2022—present
+  - **Executive Committee, Alphacrucis University College** • 2012—2018
 
 </PrintedPageWrapper>
 

@@ -23,7 +23,8 @@ const { footerHeight, headerHeight } = Astro.props;
   }
 
   table {
-    border: 1px solid red;
+    line-height: 1.5;
+    font-size: 1rem;
   }
   thead {
     height: var(--headerHeight, 0);
@@ -35,4 +36,146 @@ const { footerHeight, headerHeight } = Astro.props;
   @page {
     margin: 0cm;
   }
+
+  /* Hacky way to style MDX footnotes from ./index.mdx file... */
+  table :global(.footnotes::before) {
+    content: "";
+    text-align: center;
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: #ccc;
+    margin-top: 5rem;
+  }
+  table :global(.footnotes) {
+    font-size: 0.8em;
+  }
+  table :global(.footnotes h2) {
+    padding-top: 1em;
+  }
+
+  /* FRONT PAGE */
+  /* ========== */
+
+  /* Front page layout */
+  tbody :global(section.front-page) {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 6em;
+    break-after: page;
+    font-size: 1.1em;
+  }
+
+  /* Front page heading */
+  tbody :global(h1) {
+    font-size: 2.75em;
+    line-height: 1.4;
+    max-width: 80%;
+    margin: 0;
+    color: rgb(var(--accent));
+    font-weight: 900;
+  }
+
+  /* Front page list items */
+  tbody :global(.front-page ul) {
+    margin: 0;
+  }
+  tbody :global(.front-page > ul) {
+    padding-inline-start: 3em;
+  }
+  tbody :global(.front-page ul p) {
+    margin: 0;
+  }
+  tbody :global(li) {
+    font-weight: normal;
+    padding: 0.1em 0;
+  }
+  tbody :global(li[data-type]) {
+    list-style: none;
+    font-weight: bold;
+  }
+  tbody :global(li[data-type]::before) {
+    content: "";
+    display: block;
+    width: 1em;
+    height: 1em;
+    position: absolute;
+    transform: translateX(-1.5em) translateY(0.25em);
+
+    background-position: center;
+    background-size: cover;
+  }
+  tbody :global(li[data-type="email"]::before) {
+    background-image: url("/icons/envelope.svg");
+  }
+  tbody :global(li[data-type="phone"]::before) {
+    background-image: url("/icons/mobile-button.svg");
+  }
+  tbody :global(li[data-type="linkedin"]::before) {
+    background-image: url("/icons/linkedin.svg");
+  }
+  tbody :global(li[data-type="github"]::before) {
+    background-image: url("/icons/github.svg");
+  }
+  tbody :global(li[data-type="cv"]::before) {
+    background-image: url("/icons/document.svg");
+  }
+
+  /* Front page time stamp */
+  tbody :global(time) {
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+
+  /* UTILITIES */
+  /* ========= */
+  tbody :global(h2, a) {
+    color: rgb(var(--accent));
+  }
+  tbody :global(h2) {
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+  }
+  /* Remove margin when at top of new page */
+  tbody :global(h2:nth-of-type(1)) {
+    margin-top: 0;
+  }
+  tbody :global(h2 + h3) {
+    margin-top: 0;
+  }
+  tbody :global(h3) {
+    margin-top: 2.5em;
+    margin-bottom: 0.5em;
+    text-transform: uppercase;
+    font-size: 1em;
+    border-bottom: 1px solid #eee;
+  }
+  tbody :global(ul) {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  @media print {
+    tbody :global(a) {
+      text-decoration: none;
+      color: var(--text-color);
+    }
+  }
 </style>
+
+<script>
+  /**
+   * Move MDX generated footnotes inside the <table> so that the printed page
+   * footer doesn't get covered when the last page has long content.
+   */
+  const footnoteElm = document.querySelector("[data-footnotes]") as HTMLElement;
+  const tdElm = document.querySelector(
+    "td:has([class='front-page'])"
+  ) as HTMLTableCellElement;
+
+  if (footnoteElm && tdElm) {
+    tdElm.appendChild(footnoteElm);
+  }
+</script>
