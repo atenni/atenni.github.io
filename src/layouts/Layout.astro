@@ -3,7 +3,7 @@ export interface Props {
   title: string;
 }
 
-const { title: propsTitle, frontmatter } = Astro.props;
+const { title: propsTitle, frontmatter, extraHead } = Astro.props;
 
 // Use Markdown title (via `frontmatter`), otherwise fallback to props title
 const title = frontmatter?.title ?? propsTitle ?? "";
@@ -16,6 +16,7 @@ const title = frontmatter?.title ?? propsTitle ?? "";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="https://fav.farm/🟣" />
     <title>{title}</title>
+    <slot name="extra-head" />
   </head>
   <body>
     <slot />
@@ -24,27 +25,27 @@ const title = frontmatter?.title ?? propsTitle ?? "";
 
 <style is:global>
   :root {
-    --page-padding: 3vmin;
-    --bg-color: hsl(230deg, 100%, 5%);
-    --text-color: hsl(230deg, 100%, 70%);
-    --accent: 124, 58, 237;
-    --accent-gradient: linear-gradient(
+    --padding-page: 3vmin;
+    --color-bg: hsl(230deg, 100%, 5%);
+    --color-text: hsl(230deg, 100%, 70%);
+    --color-accent: 124, 58, 237;
+    --color-accent-gradient: linear-gradient(
       45deg,
-      rgb(var(--accent)),
+      rgb(var(--color-accent)),
       #da62c4 30%,
       white 60%
     );
   }
   html {
     font-family: system-ui, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    background-color: var(--color-bg);
+    color: var(--color-text);
     margin: 0;
     padding: 0;
   }
   body {
     margin: 0;
-    padding: var(--page-padding);
+    padding: var(--padding-page);
   }
   code {
     font-family: Menlo, Monaco, Lucida Console, Liberation Mono,

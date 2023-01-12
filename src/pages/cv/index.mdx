@@ -1,6 +1,7 @@
 ---
 layout: ../../layouts/Layout.astro
 title: Curriculum Vitae for Andrew Tennikoff
+headerHeight: 1.5cm
 footerHeight: 2cm
 draft: true
 ---
@@ -10,8 +11,8 @@ import PageBreak from "./_PageBreak.astro";
 import PrintedPageWrapper from "./_PrintedPageWrapper.astro";
 
 <PrintedPageWrapper
-  footerHeight={frontmatter.footerHeight}
-  headerHeight={frontmatter.footerHeight}>
+  headerHeight={frontmatter.headerHeight}
+  footerHeight={frontmatter.footerHeight}>
 
   <section class="front-page">
 
@@ -30,10 +31,14 @@ import PrintedPageWrapper from "./_PrintedPageWrapper.astro";
     <li data-type="github">
       https://github.com/atenni
     </li>
-    <li data-type="cv">
+    {/* <li data-type="cv">
       https://andrew.tennikoff.com/cv
       
       - _(An online version of this document for sharing, forwarding etc.)_
+    </li> */}
+    
+    <li data-type="pronunciation">
+      Tennikoff ⇒ "[ten-nee-koff](http://ipa-reader.xyz/?text=%CB%88t%C9%9Bn.i.%CB%8Ckof&voice=Russell)"
     </li>
   </ul>
   
@@ -51,17 +56,18 @@ import PrintedPageWrapper from "./_PrintedPageWrapper.astro";
 
   ## Professional statement
 
-  **I love the web and have worked in various capacities as both a front & backend
-  developer for the last 10 years. Most recently my responsibilities
-  have been centred around _engineering management_ – but for my next role I'd
-  like to pivot back towards an _individual contributor_ position within a team.**
+  **I've worked in various capacities as both a front & backend developer for
+  the last 10 years. Most recently my responsibilities have been centred around
+  _engineering management_ – but for my next role I'd like to pivot back towards
+  an _individual contributor_ position within a team.**
 
   The common thread throughout my career has been _the application technical
-  solutions to user and business problems._ I started out building websites for
-  musicians, moved into the _education technology_ space developing tools and
-  applications for online learners[^1]...
-
-  [^1]: This is a footnote
+  solutions to user/business problems,_ and this informs the work that I do
+  – I'm passionate about the user experience, and understanding the problem (or
+  job-to-be-done).
+  
+  I love working on the web platform in general, and with small diverse teams of
+  solution–focused, open–minded individuals.
 
   ### Technologies I've worked with professionally
 
@@ -78,7 +84,7 @@ import PrintedPageWrapper from "./_PrintedPageWrapper.astro";
     <li>REST</li>
     <li>GraphQL</li>
     <li>PostgreSQL</li>
-    <li>Sqlite</li>
+    <li>SQLite</li>
     <li style="break-before: column;">AWS</li>
     <li>GitHub</li>
     <li>Shopify</li>
@@ -96,45 +102,87 @@ import PrintedPageWrapper from "./_PrintedPageWrapper.astro";
   ## Certifications and Training
 
   - **AWS Certified Big Data** • 2018 • Amazon Web Services
-  - **Balanced Scorecard Professional Certification** • 2020 • George Washington University
-
+  - **Balanced Scorecard Professional Certification** • 2020 • George
+    Washington University [^1]
 
   ## Employment History (Professional, Consulting & Academic)
 
   ### Professional experience
 
-  - **Founder** • 2018—present • _Malalta_
+  - **Founder** • 2018—present • _Malalta [^2]_
 
-    [Summary paragraph]
+    I started my development agency, Malalta, in 2018. At this point in time
+    _strategy_ and _management_ work had started to feel abstract and I wanted
+    to be working closer to the customer. Today I work with a diverse team of 5
+    contractors, but remain the primary developer.
+
+    The work we do is focused around: web development, eCommerce (Shopify
+    in particular), and business process automation. The technologies I'll
+    working with most weeks include:
+
+    - **Infrastructure:** _serverless_ (ie. AWS Lambda, AWS CDK, AWS EventBridge,
+      AWS DynamoDB, GitHub Actions, and various REST/GraphQL API integrations
+      between services usually via webhooks).
+    - **Backend languages:** _Python_ or _TypeScript_ in our serverless
+      functions.
+    - **Frontend frameworks:** _React_ (usually _NextJS_), _Astro_ for
+      building static sites, and _Shopify's platform_ which is built around a
+      _GraphQL_ API and _Liquid_-based theming engine. 
+
+    Examples of the type of work we regularly do include:
 
     1. [Achievement bullets...]
+
+  - **Director of Strategy** • 2018 • _Alphacrucis University College [^3]_
+
+    In this role I was responsible for coordinating the annual strategic
+    planning process in partnership with the CEO. I did very little _software
+    development_ related work during this year, but am happy to talk about it
+    in more detail if it's of interest.
+
+  - **Chief Information Officer** • 2010—2017 • _Alphacrucis University College_
+
+    While my main responsibilities were strategic direction, engagement with
+    C level stakeholders, and managing a team of 12 IT professionals,
+    Alphacrucis was small enough that I continued to play a large hands–on role
+    in the development cycle.
+    
+    Some _development_ related achievements that I implemented or took the lead
+    on during this time include:
+    
+    1. Implemented a CI/CD pipeline for website & Learning Management System
+       deployments to production, utilising GitHub Actions and AWS.
+    2. Championed various code-quality initiatives, such as a migration to
+       TypeScript, adoption of Python type hints, GitHub pull request work flow,
+       automated testing, 
+    3. Wrote several internal tools in Python and TypeScript to automate large
+       amounts of data-entry work, utilising REST, GraphQL and browser automation.
+    4. Wrote numerous integrations between various platforms, utilising AWS
+       Lambda, PostgreSQL & Microsoft SQL Server databases, Microsoft 365 APIs,
+       Salesforce APIs, Stripe APIs, Google DataStudio (now Looker Studio),
+       PowerBI, cron jobs, shell scripting, etc.
+
+  - **Web Application Developer** • 2007—2010 • _Alphacrucis University College_
+
+    In this role I became the organisation's first permanent web developer. I
+    was responsible for improving the online student experience by writing new
+    applications, improving existing ones, and bringing some previously
+    outsourced work in house.
+
+    1. Migrated several PHP/jQuery websites to Django/React.
+    2. Implemented several website redesigns.
+    3. Wrote several student facing apps in collaboration with academics to
+       improve the online learning experience.
   
-  - **Director of Strategy** • 2017—2018 • _Alphacrucis University College_
-
-    [Summary paragraph]
-
-    1. [Achievement bullets...]
-
-  * **Chief Information Officer** • 2010—2017 • _Alphacrucis University College_
-
-    [Summary paragraph]
-
-    1. [Achievement bullets...]
-
-  * **Web Application Developer** • 2007—2010 • _Alphacrucis University College_
-
-    [Summary paragraph]
-
-    1. [Achievement bullets...]
-  
-  * **Self employed** • 1996—2007
+  - **Self employed** • 1996—2007
 
     [Summary paragraph]
 
     1. _Musician (full time from 2000—2007):_ After my Bachelors of Music I
-       worked as a guitarist...
+      primarily worked as a guitarist recording and touring with various pop
+      music artists.
     2. _Freelance web development:_ Towards the end of this period I started
-       learning...
+      learning 
   
   ### Consulting experience
 
@@ -170,6 +218,22 @@ import PrintedPageWrapper from "./_PrintedPageWrapper.astro";
 
   - **Board Member, Healthy Teams Co** • 2022—present
   - **Executive Committee, Alphacrucis University College** • 2012—2018
+
+  [^1]: **George Washington University** is the certification body used by the
+        _Balanced Scorecard Institute_ internationally. To be clear, I completed
+        the BSI's Balanced Scorecard certification requirements in Australia,
+        and have not attended GWU as a student.
+  
+  [^2]: **Malalta** _([mah-lal-ta](http://ipa-reader.xyz/?text=m%C9%99.la%CA%8A.t%C9%99&voice=Russell))_ 
+        is the development agency I founded in 2018 after finishing up 11
+        years at Alphacrucis University College.
+  
+  [^3]: **Alphacrucis University College**  is an Australian Higher Education
+        provider, and the organisation I have worked at the longest. They
+        focus on online education, offer awards from Certificate III
+        through to PhDs, have about 250 staff & 5000 students, multiple
+        locations in Australia/NZ/Europe, and annual revenues of about $20-30
+        million. Link: [ac.edu.au](https://www.ac.edu.au)
 
 </PrintedPageWrapper>
 
