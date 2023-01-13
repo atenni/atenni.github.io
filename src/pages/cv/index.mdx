@@ -50,12 +50,13 @@ import PrintedPageWrapper from "./_PrintedPageWrapper.astro";
 
   {/* Note this is UTC time whereas we use local time elsewhere, so for 11hrs
       on month start/end we'll be off by one month. Meh...
-  */}
+  
   <time datetime={new Date().toISOString().split("T")[0]}>
     {
       new Date().toLocaleDateString("en-GB", { year: "numeric", month: "long" })
     }
   </time>
+  */}
   
   </section>
 
@@ -65,16 +66,16 @@ import PrintedPageWrapper from "./_PrintedPageWrapper.astro";
   management, for my next role I'd like to pivot back to being an _individual
   contributor_ within a team.**
 
-  The one common thread throughout my career has been _the application of
-  technical solutions to business & user problems,_ and this continues to inform
-  the work that I do – I'm passionate about the user experience, and
+  Throughout my career an anchoring "north star" has been _"the application of
+  technical solutions to business & user problems",_ and this continues to
+  inform the work that I do – I'm passionate about the user experience, and
   understanding the problem to be solved or customer's job-to-be-done.
 
   ### Technologies I've worked with professionally
 
   <ul style="column-count: 4;">
-    <li>JavaScript</li>
     <li>TypeScript</li>
+    <li>JavaScript</li>
     <li>React</li>
     <li>NextJS</li>
     <li>Astro</li>
@@ -82,8 +83,8 @@ import PrintedPageWrapper from "./_PrintedPageWrapper.astro";
     <li>Django</li>
     <li>Wagtail</li>
     <li style="break-before: column;">Docker</li>
-    <li>REST</li>
     <li>GraphQL</li>
+    <li>REST</li>
     <li>PostgreSQL</li>
     <li>SQLite</li>
     <li style="break-before: column;">AWS</li>
@@ -93,20 +94,20 @@ import PrintedPageWrapper from "./_PrintedPageWrapper.astro";
     <li>Test driven development</li>
   </ul>
 
-  ## Educational Qualifications
+  ## Educational qualifications
 
   - **Masters of Commerce, Finance** • University of Sydney
   - **Diploma of Financial Services** • Kaplan Professional
   - **Bachelor of Music (Honours)** • Australian Institute of Music
   - **Bachelor of Arts** • University of Sydney
 
-  ## Certifications and Training
+  ## Certifications and training
 
   - **AWS Certified Big Data** • 2018 • Amazon Web Services
   - **Balanced Scorecard Professional Certification** • 2020 • George
     Washington University [^1]
 
-  ## Employment History (Professional, Consulting & Academic)
+  ## Employment history (professional, consulting & academic)
 
   ### Professional experience
 
@@ -132,56 +133,58 @@ import PrintedPageWrapper from "./_PrintedPageWrapper.astro";
       _GraphQL_ API and _Liquid_-based templating engine. We also have a few
       _Django_ sites we maintain.
 
-    Related to the above my work involves a lot of: discussing design
+    Related to the above, my work involves a lot of: discussing design
     requirements with non-technical clients, designing technical solutions
-    inline with client budgets, collaborating with remote teammates, reviewing
-    and providing feedback on pull requests, and a lot of time management.
+    inline with client budgets, collaborating with remote teammates throughout
+    the development process, reviewing and providing feedback on pull requests,
+    and a lot of time management.
 
   - **Director of Strategy** • 2018 • _Alphacrucis University College [^3]_
 
     In this role I was responsible for coordinating the annual strategic
-    planning process in partnership with the CEO. I didn't do much _software
-    development_ work this year, but am happy to talk about the role in more
+    planning process in partnership with the CEO. I didn't do much software
+    development work this year, but am happy to talk about the role in more
     detail if it's of interest.
 
   - **Chief Information Officer** • 2010—2017 • _Alphacrucis University College_
 
     My main responsibilities were strategic direction, engagement with
     C-level stakeholders, and managing a team of 12 IT professionals. However,
-    Alphacrucis was small enough that I continued to play a large hands–on role
-    in the development cycle.
+    Alphacrucis as an organisation was small enough that I continued to play a
+    large hands–on role in the development cycle.
     
     _Development related_ achievements I implemented or took the lead
-    on during this time include:
+    on during this period include:
     
-    1. _Implementing a CI/CD pipeline for deploying various website to
-       production._ Tools: GitHub Workflows and AWS.
+    1. _Implementing a CI/CD pipeline for deploying various websites to
+       production._ Tools: GitHub Workflows, AWS Lambda, AWS CDK.
     3. _Writing several internal business tools in TypeScript and Python to
-       automate large amounts of data-entry work._ Tools: TypeScript, Python,
-       REST, GraphQL, and browser automation.
-    4. _Writing numerous integrations between various platforms._ Tools: AWS
+       automate large amounts of data-entry work._ Tools: TypeScript & Python,
+       REST & GraphQL APIs, and browser automation.
+    4. _Writing numerous integrations between internal platforms._ Tools: AWS
        Lambda, PostgreSQL & Microsoft SQL Server databases, Microsoft 365 APIs,
        Salesforce APIs, Stripe APIs, Google DataStudio (now Looker Studio),
        PowerBI, cron jobs, shell scripting, etc.
-    2. _Championing various code-quality initiatives_, such as: migrating to
-       TypeScript, adoption of Python type hints, GitHub pull request work flow,
-       and automated testing in CI/CD.
+    2. _Championing various code-quality initiatives_, including: migrating to
+       TypeScript, adoption of Python type hints, implementing a GitHub pull
+       request driven work flow, and automated testing in CI/CD.
 
   - **Web Application Developer** • 2007—2010 • _Alphacrucis University College_
 
     In this role I became the organisation's first permanent web developer. I
-    was responsible for improving the online student experience by writing new
+    was responsible for improving the online student experience by creating new
     websites and applications for students and staff, improving existing ones,
     and bringing some previously outsourced work in house. During this time I:
 
-    1. Migrated several PHP/jQuery websites to Django/React.
-    2. Implemented several website redesigns.
+    1. Migrated several idiosyncratic PHP/jQuery websites to Django/React.
+    2. Implemented two website redesigns in collaboration with an external
+       design agency.
     3. Wrote several student facing apps in collaboration with academics to
-       improve the online learning experience.
+       improve the online learning experience for students.
   
   - **Self employed musician & freelance web developer** • 1996—2007
 
-    While at University and for a few years after I worked primarily as a
+    Whilst at University and for a few years after I worked primarily as a
     guitarist with various recording artists and TV shows. Towards the end of
     this period I started building simple websites for people I worked with.
   
@@ -214,20 +217,22 @@ import PrintedPageWrapper from "./_PrintedPageWrapper.astro";
     University College_
 
     In this role I taught the _Business Information Systems_ unit to Bachelors
-    and Masters students.
+    and Masters students. The unit content was targeted for entrepreneurship,
+    and centred around databases, SaaS products, and the software development
+    process.
   
   - **Tutor: Music Theory / Aural / Guitar** • 2002—2004 • _Australian
     Institute of Music_
 
     Towards the end of my degree at the _Australian Institute of Music_ I taught
     the first year music theory and aural skills classes. I also taught guitar
-    to individual students who interested in majoring in performance as part of
+    to individual students interested in majoring in performance as part of
     their degree.
 
-  ## Governance, Boards, and Committees
+  ## Governance, boards, and committees
 
-  - **Board Member: Healthy Teams Co** • 2022—present
-  - **Executive Committee: Alphacrucis University College** • 2012—2018
+  - **Board Member: _Healthy Teams Co_** • 2022—present
+  - **Executive Committee: _Alphacrucis University College_** • 2012—2018
 
   [^1]: **George Washington University** is the certification body used by the
         _Balanced Scorecard Institute_ internationally. To be clear, I completed
