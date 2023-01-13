@@ -28,6 +28,12 @@ const { footerHeight, headerHeight } = Astro.props;
     --color-text: #333;
     --color-hr: #ccc;
     --color-hr-light: #eee;
+    --border-image-breaker-light: linear-gradient(
+        to right,
+        var(--color-hr) 9%,
+        transparent 9%
+      )
+      1;
   }
 
   @page {
@@ -73,7 +79,7 @@ const { footerHeight, headerHeight } = Astro.props;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    row-gap: 6em;
+    row-gap: 3.5rem;
     break-after: page;
     font-size: 1.15em;
   }
@@ -86,6 +92,12 @@ const { footerHeight, headerHeight } = Astro.props;
     margin: 0;
     color: rgb(var(--color-accent));
     font-weight: 900;
+  }
+
+  /* Front page elevator pitch */
+  tbody :global(h1 + p) {
+    padding-inline-start: 1em;
+    border-inline-start: 4px solid rgb(var(--color-accent));
   }
 
   /* Front page list items */
@@ -105,6 +117,7 @@ const { footerHeight, headerHeight } = Astro.props;
   tbody :global(li[data-type]) {
     list-style: none;
     font-weight: bold;
+    font-size: 0.85em;
   }
   tbody :global(li[data-type]::before) {
     content: "";
@@ -138,8 +151,12 @@ const { footerHeight, headerHeight } = Astro.props;
   tbody :global(li[data-type="pronunciation"]) {
     font-weight: normal;
     font-style: italic;
-    margin-top: 1em;
+    margin-top: 0.75em;
+    padding-top: 0.75em;
     opacity: 0.7;
+
+    border-top: 1px solid;
+    border-image: var(--border-image-breaker-light);
   }
   tbody :global(li[data-type="pronunciation"] a) {
     text-decoration: underline;
@@ -162,7 +179,8 @@ const { footerHeight, headerHeight } = Astro.props;
 
   /* Make all "sub-heading" li's that are under h3's look like headings */
   tbody :global(h3 + :where(ul, ol) > li p:has(strong)) {
-    background: rgba(var(--color-accent), 7%);
+    /* background: rgba(var(--color-accent), 7%); */
+    background: hsl(0, 0%, 96%);
     padding: 0.25em 0.5em;
     border-radius: 0.1em;
   }
