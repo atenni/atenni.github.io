@@ -20,8 +20,8 @@ import PrintedPageWrapper from "./_PrintedPageWrapper.astro";
 
   _I've worked on the web for most of my career, and have run a small software
   development agency for the last 5 years. I have a diverse professional &
-  educational background, love creative collaboration, and am passionate about
-  the user experience._
+  educational background, love creative collaboration within teams, and am
+  passionate about the user experience._
 
   <ul>
     <li data-type="email">
@@ -43,20 +43,9 @@ import PrintedPageWrapper from "./_PrintedPageWrapper.astro";
     </li> */}
     
     <li data-type="pronunciation">
-      Tennikoff ⇒ "[ten-nee-koff](http://ipa-reader.xyz/?text=%CB%88t%C9%9Bn.i.%CB%8Ckof&voice=Russell)"
+      FYI: Tennikoff ⇒ "[ten-nee-koff](http://ipa-reader.xyz/?text=%CB%88t%C9%9Bn.i.%CB%8Ckof&voice=Russell)" <span style="font-style:normal;">😀</span>
     </li>
   </ul>
-  
-
-  {/* Note this is UTC time whereas we use local time elsewhere, so for 11hrs
-      on month start/end we'll be off by one month. Meh...
-  
-  <time datetime={new Date().toISOString().split("T")[0]}>
-    {
-      new Date().toLocaleDateString("en-GB", { year: "numeric", month: "long" })
-    }
-  </time>
-  */}
   
   </section>
 
@@ -76,16 +65,21 @@ import PrintedPageWrapper from "./_PrintedPageWrapper.astro";
   <ul style="column-count: 4;">
     <li>TypeScript</li>
     <li>JavaScript</li>
+    <li>Node</li>
+    <li>Deno</li>
     <li>React</li>
     <li>NextJS</li>
     <li>Astro</li>
     <li style="break-before: column;">Python</li>
     <li>Django</li>
     <li>Wagtail</li>
+    <li>pytest</li>
     <li style="break-before: column;">Docker</li>
     <li>GraphQL</li>
     <li>REST</li>
+    <li>DynamoDB</li>
     <li>PostgreSQL</li>
+    <li>MySQL</li>
     <li>SQLite</li>
     <li style="break-before: column;">AWS</li>
     <li>GitHub</li>
@@ -113,7 +107,7 @@ import PrintedPageWrapper from "./_PrintedPageWrapper.astro";
 
   - **Founder** • 2018—present • _Malalta [^2]_
 
-    I started my development agency, Malalta, in 2018. At this stage in my
+    I started Malalta – a software development agency – in 2018. At this stage in my
     career strategy & management work had started to feel too abstract and I
     wanted to be working closer to the end user again.
     
@@ -121,35 +115,41 @@ import PrintedPageWrapper from "./_PrintedPageWrapper.astro";
     5 developers/designers. The work we do is focused around web development,
     eCommerce (Shopify in particular), and business process automation.
     
-    Broadly, the technologies I work with weekly include:
+    Broadly, the technologies I work with most weeks include:
 
-    - **Infrastructure:** _serverless_ (eg. AWS Lambda, AWS CDK, AWS EventBridge,
-      AWS DynamoDB, GitHub Actions, and various REST/GraphQL API integrations
-      between services, usually via webhooks).
-    - **Backend languages:** _Python_ or _TypeScript_ in our serverless
+    - **Infrastructure:** _serverless technologies_ (eg. AWS Lambda, AWS CDK,
+      AWS EventBridge, AWS DynamoDB, GitHub Actions, and various REST/GraphQL
+      API integrations between services, usually via webhooks).
+    - **Backend languages:** _Python_ or _TypeScript_ within our serverless
       functions.
     - **Frontend frameworks:** _React_ (usually _NextJS_), _Astro_ for
       building static sites, and _Shopify's platform_ which is built around a
       _GraphQL_ API and _Liquid_-based templating engine. We also have a few
       _Django_ sites we maintain.
+    
+    I occasionally work on _Wordpress_ sites as part of the volunteer work
+    we do at Malalta for a few non-profits, but I'm not a specialist.
 
-    Related to the above, my work involves a lot of: discussing design
-    requirements with non-technical clients, designing technical solutions
-    inline with client budgets, collaborating with remote teammates throughout
-    the development process, reviewing and providing feedback on pull requests,
-    and a lot of time management.
+    Beyond writing code my work at Malalta involves:
+    
+    - Reviewing and providing feedback on pull requests
+    - Collaborating with remote teammates throughout the development process
+    - Discussing design requirements with non-technical clients
+    - Designing and configuring technical solutions inline with the client
+      budgets
+    - A lot of time management
 
   - **Director of Strategy** • 2018 • _Alphacrucis University College [^3]_
 
     In this role I was responsible for coordinating the annual strategic
     planning process in partnership with the CEO. I didn't do much software
-    development work this year, but am happy to talk about the role in more
+    development work this year, but am happy to talk about this role in more
     detail if it's of interest.
 
   - **Chief Information Officer** • 2010—2017 • _Alphacrucis University College_
 
     My main responsibilities were strategic direction, engagement with
-    C-level stakeholders, and managing a team of 12 IT professionals. However,
+    C-level stakeholders, and managing a team of 12 individuals. However,
     Alphacrucis as an organisation was small enough that I continued to play a
     large hands–on role in the development cycle.
     
@@ -166,7 +166,8 @@ import PrintedPageWrapper from "./_PrintedPageWrapper.astro";
        Salesforce APIs, Stripe APIs, Google DataStudio (now Looker Studio),
        PowerBI, cron jobs, shell scripting, etc.
     2. _Championing various code-quality initiatives_, including: migrating to
-       TypeScript, adoption of Python type hints, implementing a GitHub pull
+       TypeScript, migrating from class based React components to functional
+       React Hooks, adoption of Python type hints, implementing a GitHub pull
        request driven work flow, and automated testing in CI/CD.
 
   - **Web Application Developer** • 2007—2010 • _Alphacrucis University College_
@@ -176,7 +177,8 @@ import PrintedPageWrapper from "./_PrintedPageWrapper.astro";
     websites and applications for students and staff, improving existing ones,
     and bringing some previously outsourced work in house. During this time I:
 
-    1. Migrated several idiosyncratic PHP/jQuery websites to Django/React.
+    1. Migrated several idiosyncratic PHP/jQuery websites to Django and vanilla
+       JavaScript.
     2. Implemented two website redesigns in collaboration with an external
        design agency.
     3. Wrote several student facing apps in collaboration with academics to
@@ -217,7 +219,7 @@ import PrintedPageWrapper from "./_PrintedPageWrapper.astro";
     University College_
 
     In this role I taught the _Business Information Systems_ unit to Bachelors
-    and Masters students. The unit content was targeted for entrepreneurship,
+    and Masters students. The unit content was tailored for entrepreneurship,
     and centred around databases, SaaS products, and the software development
     process.
   
@@ -243,12 +245,12 @@ import PrintedPageWrapper from "./_PrintedPageWrapper.astro";
         is the development agency I founded in 2018 after finishing up 11
         years at Alphacrucis University College.
   
-  [^3]: **Alphacrucis University College**  is an Australian Higher Education
-        provider, and the organisation I have worked at the longest. They
-        focus on online education, offer awards from Certificate III
-        through to PhDs, have about 250 staff & 5000 students, multiple
-        locations in Australia/NZ/Europe, and annual revenues of about $20-30
-        million. Link: [ac.edu.au](https://www.ac.edu.au)
+  [^3]: **Alphacrucis University College**  is an accredited Australian higher
+        education provider with a focus on online education. They offer awards
+        from Certificate III through to PhDs, have about 250 staff, about 5000
+        students, multiple campus locations in Australia/NZ/Europe, and annual
+        revenues of about $20-30 million. Link:
+        [ac.edu.au](https://www.ac.edu.au)
 
 </PrintedPageWrapper>
 
