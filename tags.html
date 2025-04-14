@@ -35,9 +35,11 @@ title: "Tags"
       {%- for post in site.tags[tag] -%}
         {%- unless post.draft == true -%}
           <li>
-            {%- if post.categories -%}
-              <span class="category">{{ post.categories[0] }}</span>
-            {% endif -%}
+            <!--
+              {%- if post.categories -%}
+                 <span class="category">{{ post.categories[0] }}</span>
+              {% endif -%}
+            -->
 
             <a href="{{ post.url }}">{{ post.title }}</a>
             {%- if post.excerpt %}
