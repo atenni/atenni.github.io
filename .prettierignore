@@ -4,3 +4,4 @@ _site/
 
 # File specific
 _includes/head.html
+.github/ISSUE_TEMPLATE/*.md

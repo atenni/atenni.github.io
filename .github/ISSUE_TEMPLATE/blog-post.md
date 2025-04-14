@@ -1,9 +1,9 @@
 ---
 name: Blog post
-about: Describe this issue template's purpose here.
-title: ''
+about: Draft a website post
+title: ""
 labels: blog:post
-assignees: ''
+assignees: ""
 
 ---
 

@@ -1,15 +1,18 @@
 ---
 name: Blog quote
-about: Describe this issue template's purpose here.
-title: ''
-labels: blog:til
-assignees: ''
+about: Draft a website quote
+title: ""
+labels: blog:quote
+assignees: ""
 
 ---
 
 ---
-layout: til
+layout: post
 tags: 
+# source: 
+# link: 
 # title: 
 # date: 
 ---
+> 

@@ -1,9 +1,9 @@
 ---
 name: Blog TIL
-about: Describe this issue template's purpose here.
-title: ''
+about: Draft a website TIL
+title: ""
 labels: blog:til
-assignees: ''
+assignees: ""
 
 ---
 
