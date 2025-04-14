@@ -1,0 +1,34 @@
+title: Andrew Tennikoff's site
+# description: >-
+#   My name is Andrew Tennikoff, and this is my personal website.
+#   If you want to know more about me this is a good place to start.
+url: "https://andrew.tennikoff.com"
+permalink: /:categories/:year-:month-:day-:slug
+lang: en-AU
+author: Andrew Tennikoff
+
+# Socials
+github_username: atenni
+linkedin_username: andrewtennikoff
+rss: RSS feed
+
+# Build settings
+markdown: GFM
+plugins:
+  - jekyll-feed
+exclude:
+  - README.md
+  - .gitignore
+  - .prettierignore
+  - .vscode/
+  - .github/
+  - .devcontainer/
+  - .jekyll-cache/
+  - llm/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/

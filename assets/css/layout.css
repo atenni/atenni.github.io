@@ -1,0 +1,73 @@
+/**
+ * Wrapper and layout utilities
+ */
+.wrapper {
+  max-width: calc(var(--content-width) - (var(--spacing-unit) * 2));
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--spacing-unit);
+  padding-left: var(--spacing-unit);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Only keeping clearfix for backward compatibility with any custom components */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* @media screen and (max-width: var(--on-laptop)) { */
+@media screen and (max-width: 800px) {
+  .wrapper {
+    max-width: calc(var(--content-width) - var(--spacing-unit));
+    padding-right: calc(var(--spacing-unit) / 2);
+    padding-left: calc(var(--spacing-unit) / 2);
+  }
+}
+
+/**
+ * Page content
+ */
+.page-content {
+  padding: var(--spacing-unit) 0;
+  flex: 1;
+}
+
+/* Footer columns layout */
+.footer-col-wrapper {
+  font-size: calc(var(--base-font-size) * 0.9375);
+  color: var(--grey-neutral);
+  margin-left: calc(var(--spacing-unit) / -2);
+  display: grid;
+  grid-template-columns: 35% 20% 45%;
+  gap: var(--spacing-unit);
+}
+
+.footer-col {
+  margin-bottom: calc(var(--spacing-unit) / 2);
+  padding-left: calc(var(--spacing-unit) / 2);
+}
+
+/* @media screen and (max-width: var(--on-laptop)) { */
+@media screen and (max-width: 800px) {
+  .footer-col-wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-col-3 {
+    grid-column: span 2;
+  }
+}
+
+/* @media screen and (max-width: var(--on-palm)) { */
+@media screen and (max-width: 600px) {
+  .footer-col-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-col-3 {
+    grid-column: span 1;
+  }
+}

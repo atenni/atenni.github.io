@@ -1,0 +1,46 @@
+/**
+ * Start page: /tags
+ * =================
+ */
+.page-tags {
+  & details summary {
+    border-radius: 5px;
+    padding: 3px 7px;
+    transition: background 0.4s ease-in-out;
+  }
+
+  & details[open] summary {
+    background: var(--details-summary-open-bg);
+  }
+
+  & .tag-wrap {
+    margin: 0.25em 0;
+    overflow: hidden;
+    border-radius: 5px;
+    border: 1px solid var(--grey-neutral);
+    display: inline-flex;
+    font-size: 0.85em;
+  }
+  & .tag {
+    padding: 0.15em 0.75em;
+  }
+  & .count {
+    background: var(--grey-muted);
+    color: var(--grey-neutral);
+    padding: 0.15em 0.75em;
+  }
+}
+
+/* Dark theming */
+[data-theme="dark"] .page-tags summary span.tag {
+  background: color-mix(in srgb, var(--background-color) 60%, black);
+  color: var(--grey-neutral);
+}
+
+/* Light theming */
+[data-theme="light"] .page-tags summary span.tag {
+  background: color-mix(in srgb, var(--background-color) 20%, white);
+  color: var(--grey-neutral);
+}
+
+/** End page: /tags */

@@ -1,0 +1,86 @@
+/* Variables and theme definitions */
+/* prettier-ignore */
+:root {
+  /* Enable light-dark() for CSS themes */
+  color-scheme: light dark;
+
+  /* Common variables */
+  --base-font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --base-font-size: 16px;
+  --base-font-weight: 400;
+  --small-font-size: calc(var(--base-font-size) * 0.875);
+  --base-line-height: 1.5;
+  --spacing-unit: 30px;
+
+  --content-width: 800px;
+  /* --on-palm: 600px;
+  --on-laptop: 800px; */
+
+  /* Dark Theme (default) */
+  --text-color:       hsl(0, 0%, 85%);
+  --background-color: hsl(0, 0%, 8.5%);
+  --brand-color:      hsl(262, 83%, 60%);
+  /* --brand-color:      hsl(217, 92%, 63%); */
+  --grey-neutral:     hsl(0, 0%, 55%);
+  --grey-muted:       hsl(0, 0%, 30%);
+  --grey-prominent:   hsl(0, 0%, 75%);
+  --code-background:  hsl(240, 17%, 21%);
+  --details-summary-open-bg: hsla(60, 100%, 50%, 0.05);
+
+  --highlight-background: #1e1e2e;
+  --highlight-text: #d4d4d4;
+  --highlight-keyword: #ff7b72;
+  --highlight-function: #d2a8ff;
+  --highlight-comment: #8b949e;
+  --highlight-string: #a5d6ff;
+  --highlight-number: #79c0ff;
+  --highlight-tag: #7ee787;
+  --highlight-attribute: #ffa657;
+  --highlight-deleted: #ffa198;
+  --highlight-deleted-bg: #490202;
+  --highlight-inserted: #56d364;
+  --highlight-inserted-bg: #0f5323;
+
+  /* Table colors for dark mode */
+  --table-text: color-mix(in srgb, var(--text-color) 90%, black);
+  --table-row-alt: color-mix(in srgb, var(--grey-muted) 80%, black);
+  --table-header: color-mix(in srgb, var(--grey-muted) 70%, black);
+  --table-border: color-mix(in srgb, var(--grey-muted) 60%, black);
+  --table-border-bottom: color-mix(in srgb, var(--grey-muted) 50%, black);
+}
+
+/* Light theme color variables */
+/* prettier-ignore */
+[data-theme="light"] {
+  --text-color:       hsl(0, 0%, 10%);
+  --background-color: hsl(45, 5%, 90%);
+  --brand-color:      hsl(214, 76%, 53%);
+  --grey-neutral:     hsl(0, 0%, 51%);
+  --grey-muted:       hsl(0, 0%, 85%);
+  --grey-prominent:   hsl(0, 0%, 26%);
+  --code-background:  hsl(240, 100%, 97%);
+  --details-summary-open-bg: hsla(60, 75%, 50%, 0.2);
+  
+  --highlight-background: #f6f8fa;
+  --highlight-text: #24292f;
+  --highlight-keyword: #cf222e;
+  --highlight-function: #8250df;
+  --highlight-comment: #6e7781;
+  --highlight-string: #0a3069;
+  --highlight-number: #0550ae;
+  --highlight-tag: #116329;
+  --highlight-attribute: #953800;
+  --highlight-deleted: #82071e;
+  --highlight-deleted-bg: #ffebe9;
+  --highlight-inserted: #116329;
+  --highlight-inserted-bg: #dafbe1;
+  
+  /* Table colors */
+  --table-text: color-mix(in srgb, var(--text-color) 82%, white);
+  --table-row-alt: color-mix(in srgb, var(--grey-muted) 94%, white);
+  --table-header: color-mix(in srgb, var(--grey-muted) 97%, white);
+  --table-border: color-mix(in srgb, var(--grey-muted) 96%, black);
+  --table-border-bottom: color-mix(in srgb, var(--grey-muted) 88%, black);
+}

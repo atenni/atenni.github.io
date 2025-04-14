@@ -1,0 +1,84 @@
+---
+layout: default
+---
+<article>
+  {%- comment -%}
+    <header class="quote-header">
+      <h1 class="post-title">
+        {{ page.title | escape }}
+      </h1>
+      <p class="post-meta">
+        <time
+          class="dt-published"
+          datetime="{{ page.date | date_to_xmlschema }}"
+          itemprop="datePublished"
+        >
+          {%- assign date_format = site.minima.date_format
+            | default: '%b %-d, %Y'
+          -%}
+          {{ page.date | date: date_format }}
+        </time>
+        {%- if page.author -%}
+          •
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">
+              {{- page.author -}}
+            </span>
+          </span>
+        {%- endif -%}
+      </p>
+    </header>
+  {%- endcomment -%}
+
+  <div>
+    {{ content }}
+
+    {% comment %} page source {% endcomment %}
+    {% if page.source and page.link %}
+      <p class="quote-source">
+        —<a href="{{ page.link }}">{{ page.source }}</a>
+      </p>
+    {% elsif page.source %}
+      <p class="quote-source">—{{ page.source }}</p>
+    {% elsif page.link %}
+      <p class="quote-source">—<a href="{{ page.link }}">Source…</a></p>
+    {% endif %}
+  </div>
+
+  <ul>
+    {% for tag in page.tags %}
+      <li>
+        <code>
+          <a href="/tags/#tag-{{ tag | slugify }}">{{ tag }}</a>
+        </code>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "BlogPosting",
+      "headline": "{{ page.title | escape }}",
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ page.url | absolute_url }}"
+      },
+      "url": "{{ page.url | absolute_url }}",
+      "author": {
+        "@type": "Person",
+        "name": "{{ page.author | default: site.author }}"
+      },
+      {% if page.description %}
+        "description": "{{ page.description | escape }}",
+      {% endif %}
+
+      {% if page.image %}
+        "image": "{{ page.image | absolute_url }}",
+      {% endif %}
+
+      "articleBody": {{ content | strip_html | jsonify }}
+    }
+  </script>
+</article>

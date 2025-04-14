@@ -1,0 +1,174 @@
+/**
+ * Syntax highlighting styles - GitHub style
+ */
+.highlight {
+  background: var(--highlight-background);
+  margin-bottom: calc(var(--spacing-unit) / 2);
+  color: var(--highlight-text);
+
+  /* Table and pre styling */
+  & table td {
+    padding: 5px;
+  }
+
+  & table pre {
+    margin: 0;
+  }
+
+  /* Code blocks inside syntax highlighting */
+  & code {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    font-size: calc(var(--base-font-size) * 0.9375);
+  }
+
+  /* Text and whitespace */
+  & .w {
+    color: var(--highlight-text);
+    background-color: var(--highlight-background);
+  }
+
+  /* Keywords */
+  & .k,
+  & .kd,
+  & .kn,
+  & .kp,
+  & .kr,
+  & .kt,
+  & .kv {
+    color: var(--highlight-keyword);
+  }
+
+  /* Errors and deleted */
+  & .gr {
+    color: var(--highlight-background);
+  }
+
+  & .gd {
+    color: var(--highlight-deleted);
+    background-color: var(--highlight-deleted-bg);
+  }
+
+  & .err {
+    color: var(--highlight-background);
+    background-color: var(--highlight-deleted);
+  }
+
+  /* Built-ins and namespaces */
+  & .nb,
+  & .nc,
+  & .no,
+  & .nn {
+    color: var(--highlight-attribute);
+  }
+
+  /* Names, attributes, and tags */
+  & .sr,
+  & .na,
+  & .nt {
+    color: var(--highlight-tag);
+  }
+
+  /* Inserted code */
+  & .gi {
+    color: var(--highlight-inserted);
+    background-color: var(--highlight-inserted-bg);
+  }
+
+  /* Numbers, literals, operators and other values */
+  & .kc,
+  & .l,
+  & .ld,
+  & .m,
+  & .mb,
+  & .mf,
+  & .mh,
+  & .mi,
+  & .il,
+  & .mo,
+  & .mx,
+  & .sb,
+  & .bp,
+  & .ne,
+  & .nl,
+  & .py,
+  & .nv,
+  & .vc,
+  & .vg,
+  & .vi,
+  & .vm,
+  & .o,
+  & .ow {
+    color: var(--highlight-number);
+  }
+
+  /* Headers and users */
+  & .gh,
+  & .gu {
+    color: var(--highlight-number);
+    font-weight: bold;
+  }
+
+  /* Strings */
+  & .s,
+  & .sa,
+  & .sc,
+  & .dl,
+  & .sd,
+  & .s2,
+  & .se,
+  & .sh,
+  & .sx,
+  & .s1,
+  & .ss {
+    color: var(--highlight-string);
+  }
+
+  /* Functions and methods */
+  & .nd,
+  & .nf,
+  & .fm {
+    color: var(--highlight-function);
+  }
+
+  /* Comments */
+  & .c,
+  & .ch,
+  & .cd,
+  & .cm,
+  & .cp,
+  & .cpf,
+  & .c1,
+  & .cs,
+  & .gl,
+  & .gt {
+    color: var(--highlight-comment);
+  }
+
+  /* Other elements */
+  & .ni,
+  & .si {
+    color: var(--highlight-text);
+  }
+
+  /* Emphasized styles */
+  & .ges {
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  & .ge {
+    color: var(--highlight-text);
+    font-style: italic;
+  }
+
+  & .gs {
+    color: var(--highlight-text);
+    font-weight: bold;
+  }
+}
+
+.highlighter-rouge .highlight {
+  background: var(--highlight-background);
+}
