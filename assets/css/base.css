@@ -122,8 +122,6 @@ blockquote {
   color: var(--grey-neutral);
   border-left: 4px solid var(--grey-muted);
   padding-left: calc(var(--spacing-unit) / 2);
-  font-size: calc(var(--base-font-size) * 1.125);
-  letter-spacing: -1px;
   font-style: italic;
 
   & > :last-child {
