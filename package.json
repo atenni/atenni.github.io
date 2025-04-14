@@ -1,24 +1,20 @@
 {
-  "name": "andrew.tennikoff.com",
-  "type": "module",
-  "version": "0.0.1",
-  "private": true,
+  "name": "atenni.github.io",
+  "version": "1.0.0",
+  "description": "Static site generator for andrew.tennikoff.com",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "astro": "^2.0.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atenni/atenni.github.io.git"
   },
+  "bugs": {
+    "url": "https://github.com/atenni/atenni.github.io/issues"
+  },
+  "homepage": "https://github.com/atenni/atenni.github.io#readme",
   "devDependencies": {
-    "@astrojs/mdx": "^0.15.0",
-    "prettier": "^2.8.2",
-    "prettier-plugin-astro": "^0.7.2"
-  },
-  "prettier": {
-    "proseWrap": "always"
+    "@shopify/prettier-plugin-liquid": "^1.9.2",
+    "prettier": "^3.5.3"
   }
 }

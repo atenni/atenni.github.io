@@ -1,0 +1,59 @@
+<footer class="site-footer">
+  <div class="wrapper">
+    <h2 class="footer-heading">{{ site.title | escape }}</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">
+            {%- if site.author -%}
+              {{ site.author | escape }}
+            {%- else -%}
+              {{ site.title | escape }}
+            {%- endif -%}
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">{%- include social.html -%}</div>
+
+      <div class="footer-col footer-col-3">
+        <p>{{- site.description | escape -}}</p>
+        <div class="theme-switch">
+          <span>🌞</span>
+          <input
+            type="checkbox"
+            id="theme-toggle"
+            aria-label="Toggle dark mode"
+          >
+          <label for="theme-toggle"></label>
+          <span>🌙</span>
+          <span class="theme-label">Dark Mode</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Theme switcher functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const themeToggle = document.getElementById('theme-toggle');
+      const themeLabel = document.querySelector('.theme-label');
+
+      // Set initial toggle state and label based on current theme
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      themeToggle.checked = currentTheme === 'dark';
+      themeLabel.textContent =
+        currentTheme === 'dark' ? 'Dark Mode' : 'Light Mode';
+
+      // Handle theme toggle changes
+      themeToggle.addEventListener('change', () => {
+        const newTheme = themeToggle.checked ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        themeLabel.textContent =
+          newTheme === 'dark' ? 'Dark Mode' : 'Light Mode';
+      });
+    });
+  </script>
+</footer>

@@ -1,0 +1,32 @@
+/**
+ * Site footer
+ */
+.site-footer {
+  border-top: 1px solid var(--grey-muted);
+  padding: var(--spacing-unit) 0;
+}
+
+.footer-heading {
+  font-size: calc(var(--base-font-size) * 1.125);
+  margin-bottom: calc(var(--spacing-unit) / 2);
+}
+
+.contact-list,
+.social-media-list {
+  list-style: none;
+  margin-left: 0;
+}
+
+.social-media-list {
+  & a:hover {
+    text-decoration: none;
+
+    & .username {
+      text-decoration: underline;
+    }
+  }
+
+  & li + li {
+    padding-top: 5px;
+  }
+}

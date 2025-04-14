@@ -1,20 +1,19 @@
-# build output
-dist/
-.output/
+# Files we only want for local development purposes.
+# Ignore these so that GitHub Pages will use it's own environment.
+_site/
 
-# dependencies
+Gemfile
+Gemfile.lock
+
+.jekyll-cache/
+.sass-cache
+.jekyll-metadata
+
 node_modules/
+llm/
 
-# logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
+# Deliberately include vscode config
+!.vscode/
 
-
-# environment variables
-.env
-.env.production
-
-# macOS-specific files
+# Ah macOS...
 .DS_Store

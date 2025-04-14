@@ -1,0 +1,174 @@
+/**
+ * Reset and base styles
+ */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+hr,
+dl,
+dd,
+ol,
+ul,
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * Basic styling
+ */
+body {
+  font: var(--base-font-weight) var(--base-font-size) / var(--base-line-height)
+    var(--base-font-family);
+  color: var(--text-color);
+  background-color: var(--background-color);
+  -webkit-text-size-adjust: 100%;
+  font-feature-settings: "kern" 1;
+  font-kerning: normal;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+/**
+ * Set `margin-bottom` to maintain vertical rhythm
+ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+ul,
+ol,
+dl,
+figure,
+.vertical-rhythm {
+  margin-bottom: calc(var(--spacing-unit) / 2);
+}
+
+/**
+ * Images, figures and media
+ */
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+figure > img {
+  display: block;
+}
+
+figcaption {
+  font-size: var(--small-font-size);
+}
+
+/**
+ * Lists
+ */
+ul,
+ol {
+  margin-left: var(--spacing-unit);
+}
+
+li > ul,
+li > ol {
+  margin-bottom: 0;
+}
+
+/**
+ * Headings
+ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--base-font-weight);
+}
+
+/**
+ * Links
+ */
+a {
+  color: var(--brand-color);
+  text-decoration: none;
+
+  &:visited {
+    color: color-mix(in srgb, var(--brand-color) 85%, black);
+  }
+
+  &:hover {
+    color: var(--text-color);
+    text-decoration: underline;
+  }
+}
+
+/**
+ * Blockquotes
+ */
+blockquote {
+  color: var(--grey-neutral);
+  border-left: 4px solid var(--grey-muted);
+  padding-left: calc(var(--spacing-unit) / 2);
+  font-size: calc(var(--base-font-size) * 1.125);
+  letter-spacing: -1px;
+  font-style: italic;
+
+  & > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+/**
+ * Code formatting
+ */
+pre,
+code:not(.highlight code) {
+  font-size: calc(var(--base-font-size) * 0.9375);
+  border: 1px solid var(--grey-muted);
+  border-radius: 3px;
+  background-color: var(--code-background);
+}
+
+code:not(.highlight code) {
+  padding: 1px 5px;
+}
+
+pre {
+  padding: 8px 12px;
+  overflow-x: auto;
+
+  & > code {
+    border: 0;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+/**
+ * Icons
+ */
+.svg-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  fill: var(--grey-neutral);
+  padding-right: 5px;
+  vertical-align: text-top;
+}
+
+main {
+  display: block; /* Default value of `display` of `main` element is 'inline' in IE 11 */
+}
