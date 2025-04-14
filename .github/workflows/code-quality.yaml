@@ -18,16 +18,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository using git
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Run Prettier
         run: |
+          npm ci --include=dev
           npx prettier --check .
 
   test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository using git
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Run test suite
         run: |
           echo "::warning title=TODO::Test suite needs to be written"
@@ -39,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository using git
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Run spell check
         run: |
           echo "::warning title=TODO::Spell check needs to be set up"
