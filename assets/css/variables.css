@@ -55,8 +55,8 @@
 /* prettier-ignore */
 [data-theme="light"] {
   --text-color:       hsl(0, 0%, 10%);
-  --background-color: hsl(45, 5%, 90%);
-  --brand-color:      hsl(214, 76%, 53%);
+  --background-color: hsl(45, 5%, 85%);
+  --brand-color:      hsl(262, 83%, 60%);
   --grey-neutral:     hsl(0, 0%, 51%);
   --grey-muted:       hsl(0, 0%, 85%);
   --grey-prominent:   hsl(0, 0%, 26%);
