@@ -2,7 +2,7 @@
  * Site header
  */
 .site-header {
-  border-top: 5px solid var(--grey-prominent);
+  border-top: 5px solid var(--brand-color);
   border-bottom: 1px solid var(--grey-muted);
   min-height: calc(var(--spacing-unit) * 1.865);
   position: relative;
