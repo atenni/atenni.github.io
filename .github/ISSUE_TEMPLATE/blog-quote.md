@@ -8,7 +8,7 @@ assignees: ""
 ---
 
 ---
-layout: post
+layout: quote
 tags: 
 # source: 
 # link: 
