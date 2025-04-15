@@ -1,0 +1,130 @@
+name: Convert Issue to Blog Post
+
+# ======================================================================
+# WORKFLOW RELATIONSHIPS
+# ======================================================================
+# This workflow is part of a publishing pipeline:
+#
+# 1. This workflow (issue-to-post.yaml):
+#    - Triggers when a specific GitHub Issue is closed
+#    - Creates a new blog post based on the issue content
+#    - Commits and pushes the new post to the repository
+#
+# 2. When this workflow pushes to main, it automatically triggers:
+#    - The deploy.yaml workflow, which builds and deploys the site
+#
+# This creates an implicit chain:
+#   Issue closed → issue-to-post → [push to repo] → deploy workflow → [site deployed]
+#
+# No explicit workflow_call or workflow_dispatch dependencies are needed
+# as GitHub's event system handles the chain through the push event.
+# ======================================================================
+
+on:
+  issues:
+    types: [closed]
+
+# Permissions needed to create commits and push to the repository
+permissions:
+  contents: write
+  issues: read
+
+jobs:
+  create-post:
+    # Only run when:
+    # 1. The issue creator is @atenni (for security)
+    # 2. The closed issue has one of our blog-related labels
+    if: >
+      github.event.issue.user.login == 'atenni' &&
+      (contains(github.event.issue.labels.*.name, 'blog:post') ||
+      contains(github.event.issue.labels.*.name, 'blog:til') ||
+      contains(github.event.issue.labels.*.name, 'blog:quote'))
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # - name: Set up Ruby
+      #   uses: ruby/setup-ruby@v1
+      #   with:
+      #     ruby-version: "3.x"
+
+      - name: Extract issue information
+        id: issue
+        run: |
+          # Extract the issue title and convert to lowercase with hyphens
+          # Remove special characters and replace spaces with hyphens
+          TITLE="${{ github.event.issue.title }}"
+          SLUG=$(echo "$TITLE" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9 -]//g' | sed 's/ /-/g')
+
+          # Get today's date in YYYY-MM-DD format
+          DATE=$(date +%Y-%m-%d)
+
+          # Determine post type based on labels
+          if [[ "${{ contains(github.event.issue.labels.*.name, 'blog:post') }}" == "true" ]]; then
+            POST_TYPE="post"
+            POST_DIR="posts/_posts"
+          elif [[ "${{ contains(github.event.issue.labels.*.name, 'blog:til') }}" == "true" ]]; then
+            POST_TYPE="til"
+            POST_DIR="til/_posts"
+          elif [[ "${{ contains(github.event.issue.labels.*.name, 'blog:quote') }}" == "true" ]]; then
+            POST_TYPE="quote"
+            POST_DIR="quoting/_posts"
+          fi
+
+          echo "date=$DATE" >> $GITHUB_OUTPUT
+          echo "slug=$SLUG" >> $GITHUB_OUTPUT
+          echo "post_type=$POST_TYPE" >> $GITHUB_OUTPUT
+          echo "post_dir=$POST_DIR" >> $GITHUB_OUTPUT
+          echo "filename=${DATE}-${SLUG}.md" >> $GITHUB_OUTPUT
+          echo "filepath=${POST_DIR}/${DATE}-${SLUG}.md" >> $GITHUB_OUTPUT
+
+      - name: Create post file
+        id: create-post
+        run: |
+          # Create directory if it doesn't exist
+          mkdir -p "${{ steps.issue.outputs.post_dir }}"
+
+          # Extract the issue body and strip any GitHub comment syntax
+          ISSUE_BODY="${{ github.event.issue.body }}"
+
+          # Create the post file with front matter
+          cat > "${{ steps.issue.outputs.filepath }}" << EOL
+          ---
+          layout: ${{ steps.issue.outputs.post_type }}
+          title: "${{ github.event.issue.title }}"
+          date: ${{ steps.issue.outputs.date }}
+          categories: [${{ steps.issue.outputs.post_type }}]
+          tags: [${{ join(github.event.issue.labels.*.name, ', ') }}]
+          ---
+
+          ${ISSUE_BODY}
+
+          EOL
+
+          echo "Created post at ${{ steps.issue.outputs.filepath }}"
+
+      - name: Configure Git
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+      - name: Commit and push new post
+        run: |
+          git add "${{ steps.issue.outputs.filepath }}"
+          git commit -m "Add new ${{ steps.issue.outputs.post_type }} from issue #${{ github.event.issue.number }}"
+          git push origin ${GITHUB_REF##*/}
+
+          echo "::notice::Post created and pushed to repository. This will trigger your deploy workflow if pushed to main."
+
+      - name: Add comment to issue
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `✅ Successfully created a new blog post from this issue!\n\nPost file: \`${{ steps.issue.outputs.filename }}\`\n\nThe post will be automatically published when the deploy workflow completes.`
+            })
