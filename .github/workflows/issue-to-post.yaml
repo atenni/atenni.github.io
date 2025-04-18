@@ -104,10 +104,10 @@ jobs:
           git add "${{ steps.issue.outputs.FILEPATH }}"
           git commit -m \
             "ci: add new ${{ steps.issue.outputs.POST_TYPE }} from issue #${{ github.event.issue.number }}" \
-            || echo "::notice::Nothing to commit" && exit 0
+            || { echo "::notice::Nothing to commit"; exit 0; }
           git push
 
-          echo "::notice::Post created and pushed to repository. This will trigger a deploy workflow if pushed to main."
+          echo "::notice::Post created and pushed to repository. This will trigger the \"Deploy…\" workflow if pushed to main."
 
       - name: Add comment to issue
         uses: actions/github-script@v6
