@@ -24,10 +24,11 @@ on:
   issues:
     types: [closed]
 
-# Permissions needed to create commits and push to the repository
+# Permissions needed to create commits, push to the repository, and add a success comment
+# to the issue.
 permissions:
   contents: write
-  issues: read
+  issues: write
 
 jobs:
   create-post:
@@ -44,18 +45,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # - name: Set up Ruby
-      #   uses: ruby/setup-ruby@v1
-      #   with:
-      #     ruby-version: "3.x"
-
       - name: Extract issue information
         id: issue
         run: |
           # Extract the issue title and convert to lowercase with hyphens
-          # Remove special characters and replace spaces with hyphens
+          # Remove special characters, replace spaces with hyphens, and collapse multiple hyphens to one
+          # Example: "one%$^ two---three" -> "one-two-three"
           TITLE="${{ github.event.issue.title }}"
-          SLUG=$(echo "$TITLE" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9 -]//g' | sed 's/ /-/g')
+          SLUG=$(echo "$TITLE" \
+            | tr '[:upper:]' '[:lower:]' \
+            | sed 's/[^a-z0-9 -]//g' \
+            | sed 's/ /-/g' \
+            | sed 's/-\{2,\}/-/g' \
+            | sed 's/^-\|-$//g')
 
           # Get today's date in YYYY-MM-DD format
           DATE=$(date +%Y-%m-%d)
@@ -72,59 +74,49 @@ jobs:
             POST_DIR="quoting/_posts"
           fi
 
-          echo "date=$DATE" >> $GITHUB_OUTPUT
-          echo "slug=$SLUG" >> $GITHUB_OUTPUT
-          echo "post_type=$POST_TYPE" >> $GITHUB_OUTPUT
-          echo "post_dir=$POST_DIR" >> $GITHUB_OUTPUT
-          echo "filename=${DATE}-${SLUG}.md" >> $GITHUB_OUTPUT
-          echo "filepath=${POST_DIR}/${DATE}-${SLUG}.md" >> $GITHUB_OUTPUT
+          echo "DATE=$DATE" >> "$GITHUB_OUTPUT"
+          echo "SLUG=$SLUG" >> "$GITHUB_OUTPUT"
+          echo "POST_TYPE=$POST_TYPE" >> "$GITHUB_OUTPUT"
+          echo "POST_DIR=$POST_DIR" >> "$GITHUB_OUTPUT"
+          echo "FILENAME=${DATE}-${SLUG}.md" >> "$GITHUB_OUTPUT"
+          echo "FILEPATH=${POST_DIR}/${DATE}-${SLUG}.md" >> "$GITHUB_OUTPUT"
 
       - name: Create post file
         id: create-post
         run: |
           # Create directory if it doesn't exist
-          mkdir -p "${{ steps.issue.outputs.post_dir }}"
+          mkdir -p "${{ steps.issue.outputs.POST_DIR }}"
 
-          # Extract the issue body and strip any GitHub comment syntax
-          ISSUE_BODY="${{ github.event.issue.body }}"
+          # Write the issue body to the post file unchanged (front matter is already present in the issue body)
+          printf "%s\n" "${{ github.event.issue.body }}" > "${{ steps.issue.outputs.FILEPATH }}"
 
-          # Create the post file with front matter
-          cat > "${{ steps.issue.outputs.filepath }}" << EOL
-          ---
-          layout: ${{ steps.issue.outputs.post_type }}
-          title: "${{ github.event.issue.title }}"
-          date: ${{ steps.issue.outputs.date }}
-          categories: [${{ steps.issue.outputs.post_type }}]
-          tags: [${{ join(github.event.issue.labels.*.name, ', ') }}]
-          ---
-
-          ${ISSUE_BODY}
-
-          EOL
-
-          echo "Created post at ${{ steps.issue.outputs.filepath }}"
+          echo "Created post at ${{ steps.issue.outputs.FILEPATH }}"
 
       - name: Configure Git
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          # Act as the GitHub Actions bot user
+          # See: https://github.com/actions/checkout/blob/main/README.md#push-a-commit-using-the-built-in-token
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Commit and push new post
         run: |
-          git add "${{ steps.issue.outputs.filepath }}"
-          git commit -m "Add new ${{ steps.issue.outputs.post_type }} from issue #${{ github.event.issue.number }}"
-          git push origin ${GITHUB_REF##*/}
+          git add "${{ steps.issue.outputs.FILEPATH }}"
+          git commit -m \
+            "ci: add new ${{ steps.issue.outputs.POST_TYPE }} from issue #${{ github.event.issue.number }}" \
+            || echo "::notice::Nothing to commit" && exit 0
+          git push
 
-          echo "::notice::Post created and pushed to repository. This will trigger your deploy workflow if pushed to main."
+          echo "::notice::Post created and pushed to repository. This will trigger a deploy workflow if pushed to main."
 
       - name: Add comment to issue
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ github.token }}
           script: |
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `✅ Successfully created a new blog post from this issue!\n\nPost file: \`${{ steps.issue.outputs.filename }}\`\n\nThe post will be automatically published when the deploy workflow completes.`
+              body: `✅ Successfully created a new blog post from this issue!\n\nPost file: \`${{ steps.issue.outputs.FILENAME }}\`\n\nThe post will be automatically published when the deploy workflow completes.`
             })
