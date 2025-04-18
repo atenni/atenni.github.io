@@ -24,11 +24,14 @@ on:
   issues:
     types: [closed]
 
-# Permissions needed to create commits, push to the repository, and add a success comment
-# to the issue.
+# Permissions needed to:
+# 1. Read the closed comment, and write a success comment to the issue
+# 2. Create a commit and push to this repository
+# 3. Trigger the deploy.yaml workflow to redeploy the site
 permissions:
-  contents: write
   issues: write
+  contents: write
+  actions: write
 
 jobs:
   create-post:
@@ -119,4 +122,29 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: `✅ Successfully created a new blog post from this issue!\n\nPost file: \`${{ steps.issue.outputs.FILENAME }}\`\n\nThe post will be automatically published when the deploy workflow completes.`
+            })
+
+      - name: Redeploy static site
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            # Ideally we wouldn't need this step and the "deploy" workflow would automatically
+            # get triggered by the previous push event. However, GitHub Actions doesn't support
+            # this when using ${{ github.token }}
+            #
+            # > When you use the repository's GITHUB_TOKEN to perform tasks, events triggered by
+            # > the GITHUB_TOKEN, with the exception of workflow_dispatch and repository_dispatch,
+            # > will not create a new workflow run. This prevents you from accidentally creating
+            # > recursive workflow runs. For example, if a workflow run pushes code using the
+            # > repository's GITHUB_TOKEN, a new workflow will not run even when the repository
+            # > contains a workflow configured to run when push events occur.
+            #
+            # Docs: https://docs.github.com/en/actions/security-for-github-actions/security-guides/automatic-token-authentication
+
+            github.rest.actions.createWorkflowDispatch({
+              workflow_id: 'deploy.yaml',
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'main'
             })
