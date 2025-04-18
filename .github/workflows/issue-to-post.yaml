@@ -100,13 +100,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Commit and push new post
-        env:
-          ADMIN_PAT__GIT_PUSH: ${{ secrets.ADMIN_PAT__GIT_PUSH }}
         run: |
-          # Branch protection rules in this repo prevent direct pushes to main, except for admins.
-          # Use an admin's PAT with `git push` permissions for this step:
-          git remote set-url origin https://x-access-token:${ADMIN_PAT__GIT_PUSH}@github.com/${{ github.repository }}
-
           git add "${{ steps.issue.outputs.FILEPATH }}"
           git commit -m \
             "ci: add new ${{ steps.issue.outputs.POST_TYPE }} from issue #${{ github.event.issue.number }}" \
