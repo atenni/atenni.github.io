@@ -3,7 +3,8 @@ layout: quote
 tags: [karen-lloyd, science, microbiology, intraterrestrials]
 source: Karen Lloyd
 link: https://www.noemamag.com/theres-life-inside-earths-crust/
-title: "Karen Lloyd\: There's life inside Earth's crust"
+title: >-
+  Karen Lloyd: There's life inside Earth's crust
 ---
 On _Intraterrestrials_ – microbes surviving deep below the Earth's surface without sun and oxygen but instead via thermodynamics, and the ability to respire most elements of the periodic table…
 
