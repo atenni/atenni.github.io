@@ -10,9 +10,10 @@ assignees: ""
 ---
 layout: quote
 tags: 
-# source: 
+title: >-
+  
+source: 
 # link: 
-# title: 
 # date: 
 ---
 > 
