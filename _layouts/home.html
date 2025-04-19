@@ -10,14 +10,16 @@ layout: default
     <h2 class="post-list-heading">{{ page.list_title | default: 'Posts' }}</h2>
     <ul class="post-list">
       {%- for post in site.posts -%}
-        <li>
-          {%- assign date_format = site.minima.date_format
-            | default: '%b %-d, %Y'
-          -%}
+        <li class="{{ post.categories | join: ' ' | escape }}">
+          {%- assign date_format = site.minima.date_format | default: '%b %-d, %Y' -%}
           <span class="post-meta">{{ post.date | date: date_format }}</span>
           <h3>
             <a class="post-link" href="{{ post.url | relative_url }}">
-              {%- if post.categories contains 'til' %}TIL: {% endif -%}
+              {%- if post.categories contains 'til' -%}
+                <span>TIL</span>
+              {%- elsif post.categories contains 'quoting' -%}
+                <span>Quoting</span>
+              {%- endif -%}
               {{- post.title | escape -}}
             </a>
           </h3>
@@ -25,9 +27,5 @@ layout: default
         </li>
       {%- endfor -%}
     </ul>
-
-    <p class="rss-subscribe">
-      subscribe <a href="{{ '/feed.xml' | relative_url }}">via RSS</a>
-    </p>
   {%- endif -%}
 </div>
