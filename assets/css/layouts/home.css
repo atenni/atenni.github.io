@@ -35,7 +35,7 @@
   margin-block: calc(var(--spacing-unit) * 2);
   padding: 1em;
 
-  background-color: color-mix(in srgb, var(--grey-neutral), transparent 90%);
-  border: 1px solid var(--grey-muted);
+  background-color: color-mix(in srgb, var(--grey-neutral) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand-color) 50%, transparent);
   border-radius: 5px;
 }

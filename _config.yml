@@ -6,7 +6,7 @@ url: "https://andrew.tennikoff.com"
 permalink: /:categories/:year-:month-:day-:slug
 lang: en-AU
 author: Andrew Tennikoff
-show_excerpts: true
+excerpt_separator: <!-- more -->
 
 # Socials
 github_username: atenni
