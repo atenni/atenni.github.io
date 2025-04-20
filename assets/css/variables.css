@@ -19,10 +19,9 @@
   --on-laptop: 800px; */
 
   /* Dark Theme (default) */
-  --text-color:       hsl(0, 0%, 85%);
+  --text-color:       hsl(0, 0%, 70%);
   --background-color: hsl(0, 0%, 8.5%);
   --brand-color:      hsl(262, 83%, 60%);
-  /* --brand-color:      hsl(217, 92%, 63%); */
   --grey-neutral:     hsl(0, 0%, 55%);
   --grey-muted:       hsl(0, 0%, 30%);
   --grey-prominent:   hsl(0, 0%, 75%);
@@ -54,7 +53,7 @@
 /* Light theme color variables */
 /* prettier-ignore */
 [data-theme="light"] {
-  --text-color:       hsl(0, 0%, 10%);
+  --text-color:       hsl(0, 0%, 27%);
   --background-color: hsl(45, 65%, 98%);
   --brand-color:      hsl(262, 83%, 60%);
   --grey-neutral:     hsl(0, 0%, 51%);

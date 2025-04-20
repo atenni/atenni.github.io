@@ -116,6 +116,21 @@ a {
 }
 
 /**
+ * Strong/bold text
+ */
+strong,
+b {
+  color: color-mix(in srgb, currentColor 60%, white);
+}
+
+[data-theme="light"] {
+  strong,
+  b {
+    color: color-mix(in srgb, currentColor 60%, black);
+  }
+}
+
+/**
  * Blockquotes
  */
 blockquote {
