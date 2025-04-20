@@ -2,7 +2,11 @@
 @import url("/assets/css/layouts/post.css");
 /* @import url('/assets/css/layouts/page.css'); */
 
-/* Home page specific styles */
+/**
+ * Home page specific styles
+ */
+
+/** Post-type "pils" */
 .post-link span {
   display: inline-block;
   padding: 0 0.4em;
@@ -20,7 +24,10 @@
   border-radius: 5px;
   border-end-start-radius: 0;
   background-color: color-mix(in srgb, var(--brand-color), transparent 25%);
-  color: var(--background-color);
+  color: black; /* maximise contrast */
+}
+[data-theme="light"] .post-link span {
+  color: white; /* maximise contrast */
 }
 
 /* Highlight "posts" in the home page feed */

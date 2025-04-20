@@ -15,12 +15,11 @@
   --spacing-unit: 30px;
 
   --content-width: 800px;
-  /* --on-palm: 600px;
-  --on-laptop: 800px; */
+
 
   /* Dark Theme (default) */
   --text-color:       hsl(0, 0%, 70%);
-  --background-color: hsl(0, 0%, 8.5%);
+  --background-color: hsl(0, 0%, 10%);
   --brand-color:      hsl(262, 83%, 60%);
   --grey-neutral:     hsl(0, 0%, 55%);
   --grey-muted:       hsl(0, 0%, 30%);
