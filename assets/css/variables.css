@@ -4,10 +4,15 @@
   /* Enable light-dark() for CSS themes */
   color-scheme: light dark;
 
+  --sans-serif-font-family:
+    system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --serif-font-family: "Georgia", "Palatino", serif;
+  --mono-font-family: monospace; /* TODO: refine this later on... */
+  
+  --base-font-family: var(--sans-serif-font-family);
+  
   /* Common variables */
-  --base-font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --base-font-size: 16px;
   --base-font-weight: 400;
   --small-font-size: calc(var(--base-font-size) * 0.875);
