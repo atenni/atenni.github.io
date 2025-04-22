@@ -1,6 +1,8 @@
 # atenni.github.io
 
-Static site generator for andrew.tennikoff.com
+Static site generator for [andrew.tennikoff.com]
+
+[andrew.tennikoff.com]: https://andrew.tennikoff.com
 
 ---
 
