@@ -1,11 +1,12 @@
 ---
 layout: quote
 tags: [1984, george-orwell, ai, gen-ai]
-title: >- George Orwell predicts generative AI
-  
+title: >-
+  George Orwell predicts generative AI
 # source: Nineteen Eighty-Four
 # link:
-# date: 
+# date:
+
 ---
 > There was a whole chain of separate departments dealing with proletarian literature, music, drama, and entertainment generally. Here were produced rubbishy newspapers containing almost nothing except sport, crime and astrology, sensational five-cent novelettes, films oozing with sex, and sentimental songs which were **composed entirely by mechanical means on a special kind of kaleidoscope known as a versificator.**
 >
