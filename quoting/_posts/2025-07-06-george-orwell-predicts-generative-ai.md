@@ -1,6 +1,6 @@
 ---
 layout: quote
-tags: [1984, george-orwell, ai, gen-ai]
+tags: ["1984", george-orwell, ai, gen-ai]
 title: >-
   George Orwell predicts generative AI
 # source: Nineteen Eighty-Four
